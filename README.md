@@ -36,9 +36,16 @@ Maven:
 apache-maven-3.3.3
 Java version: 1.7.0_79, vendor: Oracle Corporation
 
-Instruction to Run:
+#Instruction to Run:
+
+To run application
 
 mvn jetty:run
+
+To Run Unit tests:
+
+mvn test
+
 
 #Sample Requests to test:
 
@@ -128,7 +135,8 @@ http://localhost:8080/ticketservice/rest/ticket/reserve/-2147483648
 #Assumption
 
 1 Reserveration is not done by Data
-2 
+2 Expect seats to be held before reserving
+3 Versions are not covered
 
 #Notes:
 
