@@ -1,0 +1,218 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1",
+    "title" : "Ticket Service"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/ticketservice/rest",
+  "tags" : [ {
+    "name" : "ticket"
+  } ],
+  "paths" : {
+    "/ticket/findandhold" : {
+      "post" : {
+        "tags" : [ "ticket" ],
+        "summary" : "Find And Hold",
+        "description" : "Finds availability of seats within the level specified and Hold",
+        "operationId" : "findAndHold",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/FindAndHold"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Success"
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "500" : {
+            "description" : "Unexpected server error"
+          }
+        }
+      }
+    },
+    "/ticket/hold" : {
+      "post" : {
+        "tags" : [ "ticket" ],
+        "summary" : "Hold seats",
+        "description" : "Holds seats based on availability",
+        "operationId" : "holdTicket",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Reservation"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Success"
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "500" : {
+            "description" : "Unexpected server error"
+          }
+        }
+      }
+    },
+    "/ticket/reserve/{reservationId}" : {
+      "put" : {
+        "tags" : [ "ticket" ],
+        "summary" : "Reserve seats",
+        "description" : "Reserves seats for the hold specified",
+        "operationId" : "reserveTicket",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "reservationId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Success"
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "500" : {
+            "description" : "Unexpected server error"
+          }
+        }
+      }
+    },
+    "/ticket/venue/{levelId}/availableseats" : {
+      "get" : {
+        "tags" : [ "ticket" ],
+        "summary" : "Get seats availability",
+        "description" : "Provides seat availability for a given level id",
+        "operationId" : "getAvailableSeats",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "levelId",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/AvailableStatus"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "500" : {
+            "description" : "Unexpected server error"
+          }
+        }
+      }
+    },
+    "/ticket/venuedetail" : {
+      "get" : {
+        "tags" : [ "ticket" ],
+        "summary" : "Get Venue Detail",
+        "description" : "Provides Venue details with levels and seats structure",
+        "operationId" : "getVenueDetails",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "500" : {
+            "description" : "Unexpected server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "AvailableStatus" : {
+      "type" : "object",
+      "properties" : {
+        "venue" : {
+          "type" : "string"
+        },
+        "seatsAvailable" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "FindAndHold" : {
+      "type" : "object",
+      "properties" : {
+        "emailId" : {
+          "type" : "string"
+        },
+        "minLevel" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "maxLevel" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "numberOfSeats" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "Reservation" : {
+      "type" : "object",
+      "properties" : {
+        "reservationId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "emailId" : {
+          "type" : "string"
+        },
+        "levelId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "numberOfSeats" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "timeReserved" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "holdFlag" : {
+          "type" : "string"
+        },
+        "cusomerId" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    }
+  }
+}

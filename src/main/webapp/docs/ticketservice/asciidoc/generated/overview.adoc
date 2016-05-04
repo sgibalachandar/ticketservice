@@ -1,0 +1,15 @@
+= Ticket Service
+
+== Overview
+=== Version information
+Version: 1
+
+=== URI scheme
+Host: localhost:8080
+BasePath: /ticketservice/rest
+
+=== Tags
+
+* ticket
+
+

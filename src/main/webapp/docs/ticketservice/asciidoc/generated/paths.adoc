@@ -1,0 +1,140 @@
+== Resources
+=== Ticket
+==== Find And Hold
+----
+POST /ticket/findandhold
+----
+
+===== Description
+:hardbreaks:
+Finds availability of seats within the level specified and Hold
+
+===== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|BodyParameter|body||false|<<FindAndHold>>|
+|===
+
+===== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|204|Success|No Content
+|400|Bad request|No Content
+|500|Unexpected server error|No Content
+|===
+
+===== Produces
+
+* application/json
+
+==== Hold seats
+----
+POST /ticket/hold
+----
+
+===== Description
+:hardbreaks:
+Holds seats based on availability
+
+===== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|BodyParameter|body||false|<<Reservation>>|
+|===
+
+===== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|204|Success|No Content
+|400|Bad request|No Content
+|500|Unexpected server error|No Content
+|===
+
+===== Produces
+
+* application/json
+
+==== Reserve seats
+----
+PUT /ticket/reserve/{reservationId}
+----
+
+===== Description
+:hardbreaks:
+Reserves seats for the hold specified
+
+===== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|PathParameter|reservationId||true|integer (int32)|
+|===
+
+===== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|204|Success|No Content
+|400|Bad request|No Content
+|500|Unexpected server error|No Content
+|===
+
+===== Produces
+
+* application/json
+
+==== Get Venue Detail
+----
+GET /ticket/venuedetail
+----
+
+===== Description
+:hardbreaks:
+Provides Venue details with levels and seats structure
+
+===== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|Success|object array
+|400|Bad request|No Content
+|500|Unexpected server error|No Content
+|===
+
+===== Produces
+
+* application/json
+
+==== Get seats availability
+----
+GET /ticket/venue/{levelId}/availableseats
+----
+
+===== Description
+:hardbreaks:
+Provides seat availability for a given level id
+
+===== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|PathParameter|levelId||true|integer (int32)|
+|===
+
+===== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|Success|<<AvailableStatus>>
+|400|Bad request|No Content
+|500|Unexpected server error|No Content
+|===
+
+===== Produces
+
+* application/json
+

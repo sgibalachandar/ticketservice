@@ -1,0 +1,32 @@
+== Definitions
+=== AvailableStatus
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|venue||false|string|
+|seatsAvailable||false|integer (int32)|
+|===
+
+=== FindAndHold
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|emailId||false|string|
+|minLevel||false|integer (int32)|
+|maxLevel||false|integer (int32)|
+|numberOfSeats||false|integer (int32)|
+|===
+
+=== Reservation
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|reservationId||false|integer (int32)|
+|emailId||false|string|
+|levelId||false|integer (int32)|
+|numberOfSeats||false|integer (int32)|
+|timeReserved||false|string (date-time)|
+|holdFlag||false|string|
+|cusomerId||false|integer (int32)|
+|===
+
