@@ -147,6 +147,7 @@ http://localhost:8080/ticketservice/rest/ticket/reserve/-2147483648
 
 1. Spring boot ,Java 8 and JPA could have been little more precise, But tech stack I chose based on my current project experience 
 2. Unit tests are not  covered 100%, just to showcase the skillset, I have implemented for fews methods
+3. Only in TicketService class has documentation in code, just to show best practice.
 
 
 
