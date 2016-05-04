@@ -125,3 +125,15 @@ Spec http://localhost:8080/ticketservice/rest/ticket/reserve/{holdId}
 PUT:
 http://localhost:8080/ticketservice/rest/ticket/reserve/-2147483648
 
+#Assumption
+
+1 Reserveration is not done by Data
+2 
+
+#Notes:
+
+1. Spring boot ,Java 8 and JPA could have been little more precise, But tech stack I chose based on my current project experience 
+2. Unit tests are not  covered 100%, just to showcase the skillset, I have implemented for fews methods
+
+
+
