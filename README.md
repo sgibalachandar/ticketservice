@@ -49,11 +49,12 @@ mvn test
 Ticket expiration time and customer threshold to hold ticket can be managed to through common.properties in resource folder
 
 Defaults:
-ticket.expiration.period.secs=10
+ticket.expiration.period.secs=60
 allowed.seats.percustomer=10
 
 #Sample Requests to test:
 
+Note: Create Customer before hold/reserve seats
 #Create Customer
 POST: http://localhost:8080/ticketservice/rest/register/customers/customer
 {
@@ -148,6 +149,8 @@ http://localhost:8080/ticketservice/rest/ticket/reserve/-2147483648
 1. Spring boot ,Java 8 and JPA could have been little more precise, But tech stack I chose based on my current project experience 
 2. Unit tests are not  covered 100%, just to showcase the skillset, I have implemented for fews methods
 3. Only in TicketService class has documentation in code, just to show best practice.
+4. Could not complete swagger integration.
+
 
 
 
