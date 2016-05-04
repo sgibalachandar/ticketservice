@@ -143,6 +143,7 @@ http://localhost:8080/ticketservice/rest/ticket/reserve/-2147483648
 1 Reserveration is not done by Data
 2 Expect seats to be held before reserving
 3 Versions are not covered
+4 No API developed to show reserved ticket. Only held ticket can be viewed
 
 #Notes:
 
