@@ -38,4 +38,90 @@ Java version: 1.7.0_79, vendor: Oracle Corporation
 
 Instruction to Run:
 
-mvn 
+mvn jetty:run
+
+Sample Requests to test:
+
+Create Customer
+POST: http://localhost:8080/ticketservice/rest/register/customers/customer
+{
+  "firstName":"FirstName",
+  "lastName":"LastName",
+  "emailId":"example@gmail.com"
+}
+
+Venue Detail:
+http://localhost:8080/ticketservice/rest/ticket/venuedetail
+Response:
+[
+    {
+        "seatsInRow": 50,
+        "numberOfRow": 25,
+        "levelName": "Orchestra",
+        "levelId": 1,
+        "price": 100
+    },
+   ......
+]
+
+Get Seats Availability:
+
+spec: http://localhost:8080/ticketservice/rest/ticket/venue/{levelId}/availableseats
+
+Sample:
+
+GET: http://localhost:8080/ticketservice/rest/ticket/venue/1/availableseats
+
+Response:
+{
+    "seatsAvailable": 1250,
+    "venue": "Orchestra"
+}
+Hold by levelId:
+
+http://localhost:8080/spring-mvc-db/rest/ticket/hold
+Request:
+{
+  "levelId":1,
+  "emailId":"example@gmail.com",
+  "numberOfSeats":10
+}
+
+Find And Hold by specified level ids:
+Note: Available check for seats in level is not performed across levels. Checked only within the level
+
+POST:
+http://localhost:8080/ticketservice/rest/ticket/findandhold
+Request
+{
+  
+  "emailId":"example@gmail.com",
+  "numberOfSeats":10,
+  "minLevel":1,
+  "maxLevel":2
+}
+
+Get Seats on hold by customer:
+
+GET:
+http://localhost:8080/ticketservice/rest/ticket/onhold/example@gmail.com
+Response:
+
+[
+    {
+        "cusomerId": -2147483648,
+        "emailId": null,
+        "numberOfSeats": 10,
+        "timeReserved": 1462333490934,
+        "holdFlag": null,
+        "levelId": 1,
+        "reservationId": -2147483648
+    }
+]
+
+Reserve Seats by holdId:
+
+Spec http://localhost:8080/ticketservice/rest/ticket/reserve/{holdId}
+PUT:
+http://localhost:8080/ticketservice/rest/ticket/reserve/-2147483648
+
