@@ -46,6 +46,11 @@ To Run Unit tests:
 
 mvn test
 
+Ticket expiration time and customer threshold to hold ticket can be managed to through common.properties in resource folder
+
+Defaults:
+ticket.expiration.period.secs=10
+allowed.seats.percustomer=10
 
 #Sample Requests to test:
 
