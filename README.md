@@ -21,7 +21,7 @@ The ticket service implementation should be written in Java
 The solution and tests should build and execute entirely via the command line using either Maven or Gradle as the build tool
 A README file should be included in your submission that includes instructions for building the solution and executing the tests Implementation mechanisms such as disk-based storage, a REST API, and a front-end GUI are not strictly required
 
-Tech Stack:
+#Tech Stack:
 1. Java 1.7
 2. Jersey
 3. Spring
@@ -30,7 +30,7 @@ Tech Stack:
 6. Junit/Mockito
 7. Swagger for documentation
 
-Build tool :
+#Build tool :
 
 Maven:
 apache-maven-3.3.3
@@ -40,9 +40,9 @@ Instruction to Run:
 
 mvn jetty:run
 
-Sample Requests to test:
+#Sample Requests to test:
 
-Create Customer
+#Create Customer
 POST: http://localhost:8080/ticketservice/rest/register/customers/customer
 {
   "firstName":"FirstName",
@@ -50,7 +50,7 @@ POST: http://localhost:8080/ticketservice/rest/register/customers/customer
   "emailId":"example@gmail.com"
 }
 
-Venue Detail:
+#Venue Detail:
 http://localhost:8080/ticketservice/rest/ticket/venuedetail
 Response:
 [
@@ -64,7 +64,7 @@ Response:
    ......
 ]
 
-Get Seats Availability:
+#Get Seats Availability:
 
 spec: http://localhost:8080/ticketservice/rest/ticket/venue/{levelId}/availableseats
 
@@ -77,7 +77,7 @@ Response:
     "seatsAvailable": 1250,
     "venue": "Orchestra"
 }
-Hold by levelId:
+#Hold by levelId:
 
 http://localhost:8080/spring-mvc-db/rest/ticket/hold
 Request:
@@ -87,7 +87,7 @@ Request:
   "numberOfSeats":10
 }
 
-Find And Hold by specified level ids:
+#Find And Hold by specified level ids:
 Note: Available check for seats in level is not performed across levels. Checked only within the level
 
 POST:
@@ -101,7 +101,7 @@ Request
   "maxLevel":2
 }
 
-Get Seats on hold by customer:
+#Get Seats on hold by customer:
 
 GET:
 http://localhost:8080/ticketservice/rest/ticket/onhold/example@gmail.com
@@ -119,7 +119,7 @@ Response:
     }
 ]
 
-Reserve Seats by holdId:
+#Reserve Seats by holdId:
 
 Spec http://localhost:8080/ticketservice/rest/ticket/reserve/{holdId}
 PUT:
