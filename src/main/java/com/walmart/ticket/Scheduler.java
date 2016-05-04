@@ -2,6 +2,8 @@ package com.walmart.ticket;
 
 import com.walmart.ticket.dao.ITicketDao;
 import com.walmart.ticket.model.Reservation;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.joda.time.DateTime;
 import org.joda.time.Seconds;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +22,14 @@ import java.util.Set;
  */
 @Component
 public class Scheduler {
+    private static final Log LOG = LogFactory.getLog(Scheduler.class);
     @Autowired
     private ITicketDao ticketDao;
     @Value("${ticket.expiration.period.secs}")
     private int ticketExpirationPeriodInSeconds;
     @Scheduled(fixedDelay = 10000)
     @Transactional(isolation = Isolation.SERIALIZABLE)
+    //Scheduled to run every 10 secs
     public void testScheduler(){
         List<Reservation> ticketsOnHold  = ticketDao.getAllTicketsOnHold();
         Set<Integer> reservationsToDelete = new HashSet<Integer>();
@@ -38,7 +42,7 @@ public class Scheduler {
             }
         }
         if(reservationsToDelete.size() > 0){
-
+            LOG.info("Deleting expired hold : "+reservationsToDelete);
             ticketDao.deleteExpiredTickets(reservationsToDelete);
         }
     }

@@ -49,7 +49,7 @@ public class CustomerDao implements ICustomerDao{
 		try {
 			customer = namedParameterJdbcTemplate.queryForObject(GET_CUSTOMER, namedParameters, new CustomerRowMapper());
 		}catch(EmptyResultDataAccessException e){
-			LOG.error("Customer not exist:"+emailId,e);
+			LOG.error("Customer not exist:"+emailId);
 		}catch (Exception e){
 			LOG.error("Unknown exception occurred while getting customer :"+emailId,e);
 			throw new ServiceRuntimeException(ErrorCategory.SYSTEM, ServiceErrorCode.INTERNAL_SERVER_ERROR);
