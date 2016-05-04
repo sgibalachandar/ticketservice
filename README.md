@@ -52,6 +52,8 @@ Defaults:
 ticket.expiration.period.secs=60
 allowed.seats.percustomer=10
 
+Spring scheduler runs every 10 secs to clean up expired tickets
+
 #Sample Requests to test:
 
 Note: Create Customer before hold/reserve seats
